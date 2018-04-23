@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>关于我 - 阙英龙博客</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
+  <link rel="stylesheet" type="text/css" href="__STATIC__/index/css/style.css">
+  <link href="__STATIC__/index/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="__STATIC__/index/css/font-awesome.min.css">
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.__STATIC__/index/js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header>
+     {include file="Public/nav" /}
+   </header>
+   <section>
+    <div class="container">
+      <div class="row">
+        <main class="col-md-8">
+          <article class="article  well mt">
+            <!-- 面包屑 -->
+            <ol class="breadcrumb" style="background-color: #ffffff">
+              <li><i class="fa fa-map-marker"></i><a href="{:url('Index/index')}" class="home">首页</a></li>
+              <li class="active"></i>关于我</a></li>
+            </ol>
+            {volist name="about" id="ab"}
+            <!-- 大型设备文章属性 -->
+            <div class="hidden-xs">
+              <div class="title-article">
+                <h1>关于我</h1>
+              </div>
+              <div class="tag-article">
+                <span class="label"><i class="fa fa-calendar"></i>{$ab.time|date="Y-m-d H:i",###}</span>
+              </div>
+            </div>
+            <!-- 小型设备文章属性 -->
+            <div class="visible-xs">
+              <div class="title-article">
+                <h4>关于我</h4>
+              </div>
+              <p>
+                <i class="fa fa-calendar"></i>{$ab.time|date="Y-m-d H:i",###}
+              </p>
+            </div>
+            <!-- 内容 -->
+            <div class="centent-article">
+             {$ab.content}
+           </div>
+           {/volist}
+           <div class="gz"><p>关注我：</p>
+            <a class="social weixin" href="javascript:">
+              <img class="qrcode" src="http:__STATIC__/index/images/weixin.jpg" alt="微信二维码">
+              <i class="fa fa-wechat fa-2x"></i>
+            </a>
+            <a href="http://weibo.com/1822308722" target="_blank"><i class="fa fa-weibo fa-2x"></i></a>
+            <a href="http://wpa.qq.com/msgrd?v=3&uin=747536502&site=qq&menu=yes"><i class="fa fa-qq fa-2x"></i></a>
+          </div> 
+        </article>
+      </main>
+      <!-- 侧边菜单 -->
+      {include file="Public/aside" /}
+    </div>
+  </div>
+</section>
+{include file="Public/footer" /}
+</body>
+</html>

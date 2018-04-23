@@ -1,0 +1,49 @@
+<aside class="col-md-4 sidebar">
+  <!-- 搜索 -->
+  <div class="search">
+    <form action="{:url('Search/index')}" method="get">
+      <div class="input-group">
+        <input name="keywords" type="text" class="form-control" placeholder="请输入关键字">
+        <span class="input-group-btn">
+          <button type='submit' class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+        </span>
+      </div>
+    </form>
+  </div>
+  <div id="calendar" class="calendar panel hidden-xs"></div>
+  <!-- 最热文章列表 -->
+  <div class="panel hot hidden-xs">
+    <div class="panel-heading"><i class="fa fa-fire"></i>最热文章</div>
+    <ul class="list-group list-group-flush">
+      {volist name="hotArticle" id="hotarticle"}
+      <li class="list-group-item">
+        <span class="post-title">
+          <a href="{:url('Article/index',array('artid'=>$hotarticle['id']))}" target="_blank" title="{$hotarticle.title}">{$hotarticle.title}</a>
+        </span>
+        <span class="badge">{$hotarticle.click}</span>
+      </li>
+      {/volist}
+    </ul>
+  </div>
+  <!-- 标签、友情链接 -->
+  <div class="panel hidden-xs">
+    <ul class="nav nav-pills pills-yu">
+      <li class="active"><a href="#tag-cloud" data-toggle="tab"><i class="fa fa-tags"></i>标签云</a></li>
+      <li><a href="#friend-links" data-toggle="tab"><i class="fa fa-link"></i>友情链接</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active in" id="tag-cloud">
+        <a href='#' class='tag-link-21' title='1个话题' style="color:#fe0221;font-size: 10.204081632653pt;">thinkphp5</a>
+        <a href='#' class='tag-link-22' title='1个话题' style="color:#7f79d2;font-size: 12.897959183673pt;">SEO优化</a>
+        <a href='#' class='tag-link-21' title='1个话题' style="color:#fe0221;font-size: 10.204081632653pt;">深圳网站建设</a>
+        <a href='#' class='tag-link-21' title='1个话题' style="color:#fe0221;font-size: 10.204081632653pt;">深圳seo</a>
+
+       </div>
+        <div class="tab-pane nav bs-sidenav" id="friend-links">
+          {volist name="linkRes" id="link"}
+          <li><a href="<?php echo $link['url'] ?>" target="_blank">{$link.title}</a></li>
+          {/volist}
+        </div>
+      </div>
+    </div>
+  </aside>

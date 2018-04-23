@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  {volist name="web" id="web"}
+  <title>{$web.title}</title>
+  <meta name="keywords" content="{$web.keywords}">
+  <meta name="description" content="{$web.des}">
+  {/volist}
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
+  <link rel="stylesheet" type="text/css" href="__STATIC__/index/css/style.css">
+  <link href="__STATIC__/index/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="__STATIC__/index/css/font-awesome.min.css">
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.__STATIC__/index/js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header>
+     {include file="Public/nav" /} 
+   </header>
+   <!--banner-->
+   <div id="banner" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#banner" data-slide-to="0" class="active"></li>
+      <li data-target="#banner" data-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="{$banner1.bannert}" alt="">
+      </div>
+      <div class="item">
+        <img src="{$banner2.bannert}" alt="">
+      </div>
+    </div>
+    
+  </div>
+  <section>
+    <div class="container">
+      <div class="row">
+        <main class="col-md-8">
+          <div class="title-top">
+            <p><i class="fa fa-file-text"></i>最新文章</p>
+          </div>
+          <!-- 文章列表 -->
+          {volist name="newArticle" id="newarticle"}
+          <article id="article-list">
+            <div class="article well clearfix">
+              <div class="data-article hidden-xs">
+                <span class="month">{$newarticle.time|date="m",###}月</span>
+                <span class="day">{$newarticle.time|date="d",###}</span>
+              </div>
+              <!-- 大型设备文章属性 -->
+              <div class="hidden-xs">
+                <div class="title-article">
+                  <h1><a target="_blank" href="{:url('Article/index',array('artid'=>$newarticle['id']))}" title="{$newarticle.title}">{$newarticle.title}</a></h1>
+                </div>
+                <div class="tag-article">
+                  <span class="label"><i class="fa fa-tags"></i><a href="{:url('archives/index',array('sortid'=>$newarticle['sortid']))}" rel="category tag" title="{$newarticle.sort_name}">{$newarticle.sort_name}</a></span>
+                  <span class="label"><i class="fa fa-user"></i>{$newarticle.author}</a></span>
+                  <span class="label"><i class="fa fa-eye"></i> {$newarticle.click}</span>
+                </div>
+                <div class="content-article">
+                  {if condition="$newarticle['plan'] neq ''"}         
+                  <figure class="thumbnail">
+                    <a target="_blank" href="{:url('Article/index',array('artid'=>$newarticle['id']))}"><img src="{$newarticle.plan}" alt="{$newarticle.title}" /></a>
+                  </figure>
+                  {/if}              
+                  <div class="alert">
+                    <?php echo mb_substr($newarticle['des'],0,120,'utf-8'); if(strlen($newarticle['des'])>120){echo '...';}?>
+                  </div>
+                </div>
+                <a class="btn btn-info pull-right read-more" href="{:url('Article/index',array('artid'=>$newarticle['id']))}"  title="{$newarticle.title}" target="_blank">阅读全文</a>
+              </div>
+              <!-- 大型设备文章属性结束 -->
+
+              <!-- 小型设备文章属性 -->
+              <div class="visible-xs">
+                <div class="title-article" style="margin-top: -20px;">
+                  <h4><a href="{:url('Article/index',array('artid'=>$newarticle['id']))}" target="_blank" title="{$newarticle.title}">{$newarticle.title}</a></h4>
+                </div>
+                <p>
+                  <i class="fa fa-calendar"></i>{$newarticle.time|date="Y-m-d H:i",###}
+                  <i class="fa fa-tags"></i>{$newarticle.sort_name}     
+                  <i class="fa fa-eye"></i>{$newarticle.click}
+                </p>
+                <div class="content-article">         
+                  {if condition="$newarticle['plan'] neq ''"}         
+                  <figure class="thumbnail">
+                    <a href="{:url('Article/index',array('artid'=>$newarticle['id']))}" target="_blank"><img src="{$newarticle.plan}" alt="{$newarticle.title}" /></a>
+                  </figure>  
+                  {/if}              
+                  <div class="alert">       
+                    <?php echo mb_substr($newarticle['des'],0,60,'utf-8'); if(strlen($newarticle['des'])>60){echo '...';}?>               
+                  </div>
+                </div>
+                <a class="btn btn-info pull-right read-more btn-block" href="{:url('Article/index',array('artid'=>$newarticle['id']))}"  title="{$newarticle.title}" target="_blank">阅读全文</a>
+              </div>
+              <!-- 小型设备文章属性结束 -->
+            </div>
+          </article>
+          {/volist}
+          <nav style="text-align:center;margin-top: 10px;">
+            {$newArticle->render()}
+          </nav>
+        </main>
+        <!-- 侧边菜单 -->
+        {include file="Public/aside" /}
+      </div>
+    </div>
+  </section>
+  {include file="Public/footer" /}
+</body>
+</html>

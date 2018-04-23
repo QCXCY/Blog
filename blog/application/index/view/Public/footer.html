@@ -1,0 +1,59 @@
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <p>Copyright © 2017 All rights reserved.</p>
+      <p><a href="/sitemap.xml" style="color: #fff" target="_blank" rel="nofollow">Sitemap</a></p>
+      <p><a href="http://www.miitbeian.gov.cn/" style="color: #fff" target="_blank" rel="nofollow">粤ICP备17126011号-1</a></p>
+    </div>
+  </div>
+  <ul id="jump" class="visible-lg">
+    <li><a id="to-top" style="display: none;"><i class="fa fa-arrow-circle-up"></i></a>
+    </li> 
+  </ul>
+</footer>
+<script src="__STATIC__/index/js/jquery-3.1.1.min.js"></script>
+<script src="__STATIC__/index/js/bootstrap.min.js"></script>
+<script src="__STATIC__/index/js/calendar.js"></script>
+<!-- 置顶 -->
+<script>
+ $(function(){
+  $(window).scroll(function(){
+      var topDistance=$(window).scrollTop();  //获取鼠标在本窗口现有状态下移动的高度
+      if(topDistance>100){  //如果移动高度大于100px,顶部图标单单显示出，如果移动高度小于等于100，顶部图标不显示
+        $('#to-top').fadeIn(800);
+      }else{
+        $('#to-top').fadeOut(800);
+      }
+    });
+  $('#to-top').on('click',function(){
+    $('html,body').animate({scrollTop:0},800);
+  })
+});
+</script>
+
+<!-- 百度推送 -->
+<script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https'){
+       bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+     }
+     else{
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+<!-- 百度统计 -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?8271b66eaa67cb715a650f2fd8f0505b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="__STATIC__/admin/css/bootstrap.min.css" rel="stylesheet">
+  <link href="__STATIC__/admin/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="__STATIC__/admin/css/admin.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="__STATIC__/admin/css/insert.css">
+  <script src="__STATIC__/admin/js/jquery-3.1.1.min.js"></script>
+  <script src="__STATIC__/admin/js/bootstrap.min.js"></script>
+  <script src="__STATIC__/admin/js/admin.min.js"></script>
+</head>
+<body>
+  {include file="Public/nav" /}
+  <div class="content">
+    <ol class="breadcrumb">
+      <li><a href="{:url('admin/index/index')}">主页</a></li>
+      <li class="active">友情链接</li>
+    </ol>
+    <div class="result">
+      <form action="" method="post">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>名称</th>
+              <!-- <th>描述</th> -->
+              <th>地址</th>
+              <th>操作</th>     
+            </tr>
+          </thead>
+          <tbody>
+            {volist name="linkes" id="lin"}
+            <tr>
+              <td>{$lin.id}</td>
+              <td>{$lin.title}</td>
+              <td>{$lin.url}</td>
+              <td>
+                <a href="{:url('editlink',array('id'=>$lin.id))}">修改</a>
+                <a onclick="return confirm('你确定删除？');" href="{:url('del',array('id'=>$lin.id))}">删除</a>
+              </td>
+            </tr>
+            {/volist}
+          </tbody>
+        </table>
+      </form>
+      <div>
+        {$linkes->render()}
+      </div>
+      <div>
+        <a href="{:url('Link/addlink')}">
+          <button type="button" class="btn btn-default">添加</button>
+        </a>
+      </div>
+    </div> 
+  </div>
+</body>
+</html>

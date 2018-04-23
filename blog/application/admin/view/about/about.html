@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="__STATIC__/admin/css/bootstrap.min.css" rel="stylesheet">
+  <link href="__STATIC__/admin/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="__STATIC__/admin/css/admin.css" rel="stylesheet">
+  <script src="__STATIC__/admin/js/jquery-3.1.1.min.js"></script>
+  <script src="__STATIC__/admin/js/bootstrap.min.js"></script>
+  <script src="__STATIC__/admin/js/admin.min.js"></script>
+</head>
+<body>
+  {include file="Public/nav" /}
+  <div class="content">
+    <ol class="breadcrumb">
+      <li><a href="{:url('admin/Index/index')}">主页</a></li>
+      <li class="active">关于我</li>
+    </ol>
+    <div class="result">
+      <form action="" method="post">
+        <table class="table table-bordered">
+          <tbody>
+            {volist name="about" id="ab"}
+            <tr>
+              <td style="width: 10%">添加时间</td>
+              <td>{$ab.time|date="Y-m-d",###}</td>
+            </tr>
+            <tr>
+              <td>关于我信息</td>
+              <td>{$ab.content}</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <a href="{:url('editabout',array('id'=>$ab.id))}">修改</a>
+                <a onclick="return confirm('你确定删除？');" href="{:url('del',array('id'=>$ab.id))}">删除</a>
+              </td>
+            </tr>
+            {/volist}
+          </tbody>
+        </table>
+      </form>
+      <div>
+          <a href="{:url('About/addabout')}">
+            <button type="button" class="btn btn-default">添加</button>
+          </a>
+        </div>
+    </div> 
+  </div>
+</body>
+</html>

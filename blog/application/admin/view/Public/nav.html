@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+  <a class="navbar-brand" href="#">后台管理系统</a>
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+      <li class="nav-item" data-toggle="tooltip" data-placement="right">
+        <a class="nav-link" href="{:url('Index/index')}" target="_blank">
+          <i class="fa fa-fw fa-laptop"></i>
+          <span class="nav-link-text">网站首页</span>
+        </a>
+      </li>
+      <li class="nav-item" data-toggle="tooltip" data-placement="right">
+        <a class="nav-link" href="{:url('Sort/sort')}">
+          <i class="fa fa-fw fa-list-alt"></i>
+          <span class="nav-link-text">栏目管理</span>
+        </a>
+      </li>
+      <li class="nav-item" data-toggle="tooltip" data-placement="right">
+        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+          <i class="fa fa-fw fa-file-text-o"></i>
+          <span class="nav-link-text">文章管理</span>
+        </a>
+        <ul class="sidenav-second-level collapse" id="collapseComponents">
+          <li>
+            <a href="{:url('Article/addarticle')}"><i class="fa fa-fw fa-pencil-square-o"></i>添加文章</a>
+          </li>
+          <li>
+            <a href="{:url('Article/listing')}"><i class="fa fa-fw fa-table"></i>文章列表</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item" data-toggle="tooltip" data-placement="right">
+        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+          <i class="fa fa-fw fa-cogs"></i>
+          <span class="nav-link-text">系统设置</span>
+        </a>
+        <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+          <li>
+            <a href="{:url('Admin/admin')}"><i class="fa fa-fw fa-user"></i>管理员管理</a>
+          </li>
+          <li>
+            <a href="{:url('Link/link')}"><i class="fa fa-fw fa-link"></i>友情链接</a>
+          </li>
+          <li>
+            <a href="{:url('Website/website')}"><i class="fa fa-fw fa-desktop"></i>网站设置</a>
+          </li>
+          <li>
+            <a href="{:url('Banner/banner')}"><i class="fa fa-fw fa-image"></i>Banner图</a>
+          </li>
+          <li>
+            <a href="{:url('About/about')}"><i class="fa fa-fw fa-edit"></i>关于我</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a href="{:url('Login/logout')}" class="nav-link" data-toggle="modal" data-target="#exampleModal">
+          <i class="fa fa-fw fa-sign-out"></i>注销</a>
+        </li>
+      </ul>
+    </div>
+  </nav>

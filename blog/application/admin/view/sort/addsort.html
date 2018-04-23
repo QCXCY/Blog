@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="__STATIC__/admin/css/bootstrap.min.css" rel="stylesheet">
+  <link href="__STATIC__/admin/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="__STATIC__/admin/css/admin.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="__STATIC__/admin/css/insert.css">
+  <script src="__STATIC__/admin/js/jquery-3.1.1.min.js"></script>
+  <script src="__STATIC__/admin/js/bootstrap.min.js"></script>
+  <script src="__STATIC__/admin/js/admin.min.js"></script>
+</head>
+<body>
+  {include file="Public/nav" /}
+  <div class="content">
+    <ol class="breadcrumb">
+      <li><a href="{:url('admin/Index/index')}">主页</a></li>
+      <li><a href="{:url('admin/Sort/sort')}">栏目管理</a></li>
+      <li class="active">添加栏目</li>
+    </ol>
+    <div class="result">
+      <form action="" method="post">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <td>上级栏目</td>
+              <td><select name="lid">
+                <option value="0">顶级栏目</option>
+                {volist name="sorts" id="sor"}
+                <option value="{$sor.id}">{if condition="$sor['level'] neq 0" }|{/if}<?php echo str_repeat('--',$sor['level']) ?>{$sor.sort_name}</option>
+                {/volist}
+              </select></td>
+            </tr>
+            <tr>
+              <tr>
+                <td>栏目名称</td>
+                <td><input type="text" class="form-control" name="sort_name" placeholder="请输入栏目名称"></td>
+              </tr>
+              <tr>
+                <tr>
+                  <td>栏目类型</td>
+                  <td>
+                    <label>
+                      <input type="radio" checked="checked" name="type" class="inverted" value="1">
+                      <span class="text">列表</span>
+                    </label>
+                    <label>
+                      <input type="radio" name="type" class="inverted" value="2">
+                      <span class="text">单页</span>
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><button type="submit" class="btn btn-default">添加</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+        </div> 
+      </div>
+    </body>
+    </html>

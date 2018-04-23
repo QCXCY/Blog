@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>{$article.title} - 阙英龙博客</title>
+  <meta name="keywords" content="{$article.keywords}">
+  <meta name="description" content="{$article.des}">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
+  <link rel="stylesheet" type="text/css" href="__STATIC__/index/css/style.css">
+  <link href="__STATIC__/index/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="__STATIC__/index/css/font-awesome.min.css">
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.__STATIC__/index/js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header>
+      {include file="Public/nav" /}
+    </header>
+    <section>
+      <div class="container">
+        <div class="row">
+          <main class="col-md-8">
+            <article class="article  well mt">
+              <!-- 面包屑 -->
+              <ol class="breadcrumb" style="background-color: #ffffff">
+                <li><i class="fa fa-map-marker"></i><a href="{:url('Index/index')}" class="home">首页</a></li>
+                <li></i><a href="{:url('Archives/index',array('sortid'=>$article['sortid']))}">{$article.sort_name}</a></li>
+                <li class="active"></i>{$article.title}</li>
+              </ol>
+              <!-- 大型设备文章属性 -->
+              <div class="hidden-xs">
+                <div class="title-article">
+                  <h1>{$article.title}</a></h1>
+                </div>
+                <div class="tag-article">
+                  <span class="label"><i class="fa fa-calendar"></i>{$article.time|date="Y-m-d H:i",###}</span>
+                  <span class="label"><i class="fa fa-list-alt"></i>{$article.sort_name}</a></span>
+                  <span class="label"><i class="fa fa-user"></i>{$article.author}</a></span>
+                  <span class="label"><i class="fa fa-eye"></i>{$article.click}</span>
+                </div>
+              </div>
+              <!-- 小型设备文章属性 -->
+              <div class="visible-xs">
+                <div class="title-article">
+                  <h4>{$article.title}</a></h4>
+                </div>
+                <p><i class="fa fa-calendar"></i>{$article.time|date="Y-m-d H:i",###}    
+                  <i class="fa fa-eye"></i>{$article.click}</p>
+                </div>
+                <!-- 内容 -->
+                <div class="centent-article">
+                 {$article.content}
+
+                 <div>
+                  <i class="fa fa-tag"></i>
+                  <span class="tags" name="tags">
+                    <?php
+                    $tags=explode('，',$article['keywords']);
+                    foreach ($tags as $k => $v) {
+                    echo "<a href='/tags/$v' target='_blank'>$v</a>";
+                    echo ' ';
+                  }
+                  ?>
+                </span>
+              </div>
+              <!-- 分页 -->
+              <ul class="pager">
+                <li class="previous">
+                  {if condition="$prev eq ''"}
+                  {else/}
+                  <a href="{:url('Article/index',array('artid'=>$prev))}" rel="prev">上一篇</a>
+                  {/if}
+                </li>
+                <li class="next">
+                  {if condition="$next eq ''"}
+                  {else/}
+                  <a href="{:url('Article/index',array('artid'=>$next))}" rel="next">下一篇</a>
+                  {/if}
+                </li>
+              </ul>
+              <!-- 文章版权信息 -->
+              <div class="copyright alert alert-success">
+                <p>版权属于:<a href="http://www.smileyuchun.com">{$article.author}</a></p>
+                <p>原文地址:<a href="<?php echo 'http://www.smileyuchun.com/article/'.$article['id'],'.html'; ?>"><?php echo 'http://www.smileyuchun.com/article/'.$article['id'],'.html'; ?></a></p>
+                <p>转载时必须以链接形式注明原始出处及本声明。</p>
+              </div>
+              <!-- 文章分享 -->
+              <div class="clearfix" id="bdshare">
+                <div class="bdsharebuttonbox pull-right">
+                  <a href="#" class="bds_more" data-cmd="more"></a>
+                  <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                  <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+                  <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                </div>
+              </div>
+              <script>
+                window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+              </script>
+            </div>        
+          </article>
+          <!-- 表情  -->
+          <div id="cyEmoji" role="cylabs" data-use="emoji"></div>
+          <script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
+          <script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cytimIjvw"></script>
+          <!--评论-->
+          <div id="SOHUCS"></div> 
+          <script type="text/javascript"> 
+            (function(){ 
+              var appid = 'cytimIjvw'; 
+              var conf = 'prod_7f1f10f47eed5b9a9499fb8dd15b09fa'; 
+              var width = window.innerWidth || document.documentElement.clientWidth; 
+              if (width < 960) { 
+                window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); 
+              </script>
+            </main>
+            <!-- 侧边菜单 -->
+            {include file="Public/aside" /}
+          </div>
+        </div>
+      </section>
+      {include file="Public/footer" /}
+    </body>
+    </html>

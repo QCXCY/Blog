@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>标签：{$tags} - 阙英龙博客</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
+  <link rel="stylesheet" type="text/css" href="__STATIC__/index/css/style.css">
+  <link href="__STATIC__/index/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="__STATIC__/index/css/font-awesome.min.css">
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.__STATIC__/index/js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header>
+     {include file="Public/nav" /}
+   </header>
+   <section>
+    <div class="container">
+      <div class="row">
+        <main class="col-md-8">
+          <!-- 面包屑导航 -->
+          <ol class="breadcrumb mt" style="background-color: #ffffff">
+            <li><i class="fa fa-home"></i><a href="{:url('index/index')}" class="home">首页</a></li>
+            <li class="active"></i>标签：{$tags}&nbsp;&nbsp;相关内容</a></li>
+          </ol>
+          <!-- 文章列表 -->
+          {volist name="Tagser" id="tagser"}
+          <article id="article-list">
+            <div class="article well clearfix">
+              <div class="data-article hidden-xs">
+                <span class="month">{$tagser.time|date="m",###}月</span>
+                <span class="day">{$tagser.time|date="d",###}</span>
+              </div>
+              <!-- 大型设备文章属性 -->
+              <div class="hidden-xs">
+                <div class="title-article">
+                  <h1><a href="{:url('Article/index',array('artid'=>$tagser['id']))}" title="{$tagser.title}" target="_blank">{$tagser.title}</a></h1>
+                </div>
+                <div class="tag-article">
+                  <span class="label"><i class="fa fa-tags"></i><a href="{:url('archives/index',array('sortid'=>$tagser['sortid']))}" rel="category tag" title="{$tagser.sort_name}">{$tagser.sort_name}</a></span>
+                  <span class="label"><i class="fa fa-user"></i>{$tagser.author}</a></span>
+                  <span class="label"><i class="fa fa-eye"></i> {$tagser.click}</span>
+                </div>
+                <div class="content-article">
+                  {if condition="$tagser['plan'] neq ''"}         
+                  <figure class="thumbnail">
+                    <a href="{:url('Article/index',array('artid'=>$tagser['id']))}" target="_blank"><img width="100%" src="{$tagser.plan}" alt="{$tagser.title}" /></a>
+                  </figure>
+                  {/if}              
+                  <div class="alert">       
+                    {$tagser.des}
+                  </div>
+                </div>
+                <a class="btn btn-info pull-right read-more" href="{:url('Article/index',array('artid'=>$tagser['id']))}"  title="{$tagser.title}" target="_blank">阅读全文</a>
+              </div>
+              <!-- 大型设备文章属性结束 -->
+
+              <!-- 小型设备文章属性 -->
+              <div class="visible-xs">
+                <div class="title-article">
+                  <h4><a href="{:url('Article/index',array('artid'=>$tagser['id']))}" title="{$tagser.title}" target="_blank">{$tagser.title}</a></h4>
+                </div>
+                <p>
+                  <i class="fa fa-calendar"></i>{$tagser.time|date="Y-m-d H:i",###}
+                  <i class="fa fa-tags"></i>{$tagser.sort_name}     
+                  <i class="fa fa-eye"></i>{$tagser.click}
+                </p>
+                <div class="content-article">         
+                  {if condition="$tagser['plan'] neq ''"}         
+                  <figure class="thumbnail">
+                    <a href="{:url('Article/index',array('artid'=>$tagser['id']))}" target="_blank"><img width="100%" src="{$tagser.plan}" alt="{$tagser.title}" /></a>
+                  </figure>  
+                  {/if}              
+                  <div class="alert">       
+                    {$tagser.des}               
+                  </div>
+                </div>
+                <a class="btn btn-info pull-right read-more btn-block" href="{:url('Article/index',array('artid'=>$tagser['id']))}"  title="{$tagser.title}" target="_blank">阅读全文</a>
+              </div>
+              <!-- 小型设备文章属性结束 -->
+            </div>
+          </article>
+          {/volist}
+          <nav style="text-align:center">
+            {$Tagser->render()}
+          </nav>
+        </main>
+        <!-- 侧边菜单 -->
+        {include file="Public/aside" /}
+      </div>
+    </div>
+  </section>
+  {include file="Public/footer" /}
+</body>
+</html>

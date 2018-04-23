@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="__STATIC__/admin/css/bootstrap.min.css" rel="stylesheet">
+  <link href="__STATIC__/admin/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="__STATIC__/admin/css/admin.css" rel="stylesheet">
+  <script src="__STATIC__/admin/js/jquery-3.1.1.min.js"></script>
+  <script src="__STATIC__/admin/js/bootstrap.min.js"></script>
+  <script src="__STATIC__/admin/js/admin.min.js"></script>
+</head>
+<body>
+  {include file="Public/nav" /}
+  <div class="content">
+    <div class="txt">系统基本信息</div>
+    <div class="table-responsive">
+      <table class="table">
+        <tr>
+          <th>操作系统：</th>
+          <th><?PHP echo PHP_OS; ?></th>
+        </tr>
+        <tr>
+          <th>PHP版本：</th>
+          <th><?PHP echo PHP_VERSION; ?></th>
+        </tr>
+        <tr>
+          <th>Apache版本：</th>
+          <th><?php $version=apache_get_version();echo "$version"; ?> </th>
+        </tr>
+        <tr>
+        </table>
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © 2017 All rights reserved.</small>
+        </div>
+      </div>
+    </footer>
+  </body>
+  </html>
